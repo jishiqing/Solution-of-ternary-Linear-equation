@@ -1,0 +1,44 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    double a1, b1, c1, a2, b2, c2, a3, b3, c3;
+    double x, y, z;
+
+    cout << "请输入三元一次方程的系数：" << endl;
+    cout << "a1x + b1y + c1z = ";
+    cin >> a1 >> b1 >> c1;
+    cout << "a2x + b2y + c2z = ";
+    cin >> a2 >> b2 >> c2;
+    cout << "a3x + b3y + c3z = ";
+    cin >> a3 >> b3 >> c3;
+
+    double D = pow(a1, 2) + pow(b1, 2) + pow(c1, 2);
+    double D2 = pow(a2, 2) + pow(b2, 2) + pow(c2, 2);
+    double D3 = pow(a3, 2) + pow(b3, 2) + pow(c3, 2);
+
+    double D1 = D2 * a3 - D * a2 * a3 + D * a1 * a2 - D3 * a1;
+    double D4 = D * b2 * b3 - D2 * b3 - D * b1 * b3 + D3 * b1;
+    double D5 = D * b1 * b2 - D2 * b1 - D * b1 * b3 + D3 * b2;
+
+    double D6 = D1 * a1 + D4 * c1 - D * b1;
+    double D7 = D1 * a2 + D5 * c1 - D * b2;
+    double D8 = D2 * a1 + D6 * c2 - D * b3;
+    double D9 = D2 * a3 + D7 * c2 - D * b1;
+    double D10 = D3 * a2 + D8 * c3 - D * b2;
+    double D11 = D3 * a1 + D9 * c3 - D * b3;
+
+    x = (D6 * D10 - D7 * D9) / (D6 * D7 - D8 * D8);
+    y = (D8 * D9 - D6 * D11) / (D6 * D7 - D8 * D8);
+    z = (D7 * D9 - D8 * D6) / (D6 * D7 - D8 * D8);
+
+    cout << "解为：" << endl;
+    cout << "x = " << x << endl;
+    cout << "y = " << y << endl;
+    cout << "z = " << z << endl;
+
+    return 0;
+}
+这个程序使用了高斯消元的方法来求解三元一次方程。用户需要输入三元一次方程的系数，程序会自动计算出方程的解，并将结果输出到屏幕上。注意，这个程序假定输入的方程是合法的，如果输入的方程不合法，程序可能会出现异常。
